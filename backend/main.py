@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
-from routers import prices
+from routers import prices, analysis, ai_report
 
 app = FastAPI(
     title="Jeonnam Agri Dashboard API",
@@ -25,6 +25,8 @@ app.add_middleware(
 
 # 라우터 등록
 app.include_router(prices.router)
+app.include_router(analysis.router)
+app.include_router(ai_report.router)
 
 
 @app.get("/health")
